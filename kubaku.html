@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KUBAKU - L'Édition de Noël</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- PALETTE DE COULEURS NOËL CHIC --- */
+        :root {
+            --emerald: #064e3b; /* Vert profond */
+            --burgundy: #4a0404; /* Bordeaux riche */
+            --champagne: #d4af37; /* Or */
+            --cream: #fdfbf7; /* Blanc cassé élégant */
+            --dark-bg: #0a0a0a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--cream);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* --- EFFETS VISUELS --- */
+        /* Classe pour l'effet Parallax (l'image reste fixe au scroll) */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh; /* Chaque section fait la taille de l'écran */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        /* Filtre sombre sur les images pour que le texte ressorte */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5); 
+            z-index: 1;
+        }
+        
+        .content-box {
+            position: relative;
+            z-index: 2; /* Au-dessus de l'overlay */
+            text-align: center;
+            padding: 2rem;
+            max-width: 800px;
+            /* Effet verre dépoli (Glassmorphism) */
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 2px;
+            opacity: 0; /* Pour l'animation d'apparition */
+            transform: translateY(30px);
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- SECTIONS --- */
+
+        /* 1. HERO - L'ACCROCHE */
+        #hero {
+            /* CHANGEMENT ICI : Image de dinde/volaille rôtie chic sur fond sombre */
+            background-image: url('https://images.unsplash.com/photo-1574672280602-93d380199e66?q=80&w=1920&auto=format&fit=crop');
+            background-position: center center;
+        }
+
+        .hero-suptitle {
+            text-transform: uppercase;
+            color: var(--champagne);
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .main-title {
+            font-size: 5rem;
+            line-height: 1;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--cream), var(--champagne));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .kubaku-title {
+            font-size: 3rem;
+            color: var(--champagne);
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            border-top: 2px solid var(--champagne);
+            border-bottom: 2px solid var(--champagne);
+            display: inline-block;
+            padding: 0.5rem 2rem;
+        }
+        .details-hero {
+            font-size: 1.3rem;
+            font-style: italic;
+        }
+
+        /* 2. L'AMBIANCE (ACTE I) */
+        #act-i {
+            /* Image cozy : cheminée, sapin élégant */
+            background-image: url('https://images.unsplash.com/photo-1543589077-47d81606c1bf?q=80&w=1920&auto=format&fit=crop');
+            min-height: 80vh;
+        }
+        .act-title {
+            color: var(--champagne);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        /* 3. LE FESTIN (MENU SUBJECTIF) */
+        #feast {
+             /* Image de table dressée luxueuse, sombre */
+            background-image: url('https://images.unsplash.com/photo-1605298068192-99820927c6e9?q=80&w=1920&auto=format&fit=crop');
+            background-position: bottom center;
+        }
+        .menu-list {
+            list-style: none;
+            margin-top: 3rem;
+        }
+        .menu-list li {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+        .separator { color: var(--champagne); font-size: 1rem; display: block; margin: 1rem 0; opacity: 0.7;}
+
+        /* 4. L'ESCALADE (LA FÊTE) */
+        #act-iii {
+            /* Image de soirée, lumières, mouvement, champagne */
+            background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1920&auto=format&fit=crop');
+        }
+        .deal-box {
+            margin-top: 3rem;
+            padding: 2rem;
+            border: 2px solid var(--champagne);
+            background: rgba(6, 78, 59, 0.3); /* Vert émeraude transparent */
+        }
+        .deal-highlight {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--champagne);
+            text-transform: uppercase;
+        }
+
+        footer {
+            background: var(--dark-bg);
+            padding: 3rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .main-title { font-size: 3.5rem; }
+            .kubaku-title { font-size: 2rem; }
+            .menu-list li { font-size: 1.4rem; }
+            .parallax { background-attachment: scroll; /* Parallax désactivé sur mobile pour performance */ }
+        }
+    </style>
+</head>
+<body>
+
+    <section id="hero" class="parallax">
+        <div class="overlay"></div>
+        <div class="content-box">
+            <p class="hero-suptitle">L'événement de l'année</p>
+            <h1 class="main-title">Noël des Copains</h1>
+            <div>
+                <h2 class="kubaku-title">KUBAKU</h2>
+            </div>
+            <p class="details-hero">Samedi 20 Décembre — Dès 19h00</p>
+            <p style="margin-top: 20px; color: var(--champagne); letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem;">— Tenue incorrecte exigée —</p>
+        </div>
+    </section>
+
+    <section id="act-i" class="parallax">
+        <div class="overlay" style="background: rgba(6, 78, 59, 0.6);"></div> <div class="content-box" style="animation-delay: 0.3s;">
+            <h3 class="act-title">Acte I : L'Étincelle (19h00)</h3>
+            <p>Lumières tamisées, crépitement du feu et premières effusions.</p>
+            <p>L'ambiance Christmas, la vraie. Celle qui brille dans les verres avant de brûler les esprits.</p>
+        </div>
+    </section>
+
+    <section id="feast" class="parallax">
+        <div class="overlay" style="background: rgba(0,0,0,0.7);"></div>
+        <div class="content-box" style="animation-delay: 0.3s;">
+            <h3 class="act-title">Acte II : Le Festin</h3>
+            <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;">— Dîner assis, haute voltige —</p>
+            
+            <ul class="menu-list">
+                <li>Promenade iodée & zestes d'hiver</li>
+                <span class="separator">✦</span>
+                <li>La pièce maîtresse & son cortège royal</li>
+                <span class="separator">✦</span>
+                <li>Douceurs interdites & éclats sucrés</li>
+            </ul>
+            <p style="font-size: 0.9rem; margin-top: 2rem; opacity: 0.8;">(Je gère la gastronomie. Préparez vos palais.)</p>
+        </div>
+    </section>
+
+    <section id="act-iii" class="parallax">
+        <div class="overlay" style="background: rgba(74, 4, 4, 0.6);"></div> <div class="content-box" style="animation-delay: 0.3s;">
+            <h3 class="act-title">Acte III : L'Incendie</h3>
+            <p>Les chaises reculent. Le volume monte. La bienséance quitte la pièce.</p>
+            <p>Ce qui se passe après le dessert appartient à la légende de Kubaku.</p>
+
+            <div class="deal-box">
+                <h3 style="color: var(--cream); margin-bottom: 1rem;">Le Pacte Unique</h3>
+                <p style="margin-bottom: 1rem;">Pour que la magie opère, la règle est simple :</p>
+                <p class="deal-highlight">On fournit le Solide.</p>
+                <p class="deal-highlight" style="margin-top: 0.5rem;">Vous assurez le Liquide.</p>
+                <p style="font-style: italic; margin-top: 1.5rem; font-size: 0.9rem;">(Prévoyez large. Indécemment large.)</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 KUBAKU CHRISTMAS SOCIETY.</p>
+        <p>Toute ressemblance avec une soirée qui dérape est purement intentionnelle.</p>
+    </footer>
+
+</body>
+</html>
